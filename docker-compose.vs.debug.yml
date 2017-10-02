@@ -1,0 +1,18 @@
+version: '2.1'
+
+services:
+  developerexperiencevs:
+    image: developerexperiencevs:dev
+    build:
+      args:
+        source: ${DOCKER_BUILD_SOURCE}
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+    volumes:
+      - ./DeveloperExperienceVS:/app
+      - ~/.nuget/packages:/root/.nuget/packages:ro
+      - ~/clrdbg:/clrdbg:ro
+      - ../TestDeveloperExperienceVS/bin/Debug/netcoreapp1.1:/app/test
+    entrypoint: tail -f /dev/null
+    labels:
+      - "com.microsoft.visualstudio.targetoperatingsystem=linux"

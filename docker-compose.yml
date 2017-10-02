@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  developerexperiencevs:
+    image: developerexperiencevs
+    build:
+      context: ./DeveloperExperienceVS
+      dockerfile: Dockerfile
